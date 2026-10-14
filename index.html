@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A Handcrafted Romantic Experience for Archita from Akshat ❤️">
+  <title>Happy Birthday Archita — Made with Love ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+  
+  <!-- Canvas for Procedural Cherry Tree & Falling Petals -->
+  <canvas id="tree-canvas" class="background-canvas" aria-hidden="true"></canvas>
+
+  <!-- Background Music Player -->
+  <audio id="bg-audio-player" loop preload="auto">
+    <source id="bg-audio-source" src="./song.mp3.mp3" type="audio/mp3">
+    Your browser does not support audio playback.
+  </audio>
+
+  <!-- Top Floating Header Bar -->
+  <header class="top-nav-dock">
+    <div class="session-progress-pill">
+      <span class="progress-step-text" id="progress-step-text">Room 1 of 15</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="session-progress-fill" style="width: 6.67%;"></div>
+      </div>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button id="btn-toggle-music" class="music-dock-btn" aria-label="Toggle Romantic Music">
+      <span class="music-icon" id="music-icon-state">🎵</span>
+      <span class="music-label" id="music-status-text">Play Song</span>
+    </button>
+  </header>
+
+  <!-- Main Slide Stack Container -->
+  <main class="slide-deck-container" id="slide-deck">
+
+    <!-- PAGE 1 (EXISTING SLIDE 1): Welcome Screen -->
+    <section class="slide-page active" data-step="1" id="slide-1">
+      <div class="slide-card glass-panel text-center">
+        <div class="heart-pulse-icon" aria-hidden="true">💖</div>
+        <p class="slide-eyebrow">A Special Surprise Just for You</p>
+        <h1 class="slide-main-title">From Me to You ❤️</h1>
+        <p class="slide-artistic-sub">"This is how much I cherish you, Archita."</p>
+        <p class="slide-description">Every little detail, every page, and every falling flower petal was made by hand to bring a sweet smile to your face on your special day.</p>
+        <div class="action-btn-group">
+          <button class="btn-primary btn-next-slide">
+            <span>Begin Our Journey ➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2 (NEW PAGE 1): Romantic Heart Reveal -->
+    <section class="slide-page" data-step="2" id="slide-new-1">
+      <div class="slide-card cream-romance-card heart-reveal-card text-center">
+        <div class="section-badge cream-badge">Room 2 • Heart Reveal</div>
+        <h2 class="cream-heading">A Heart That Beats for You, Archita 💖</h2>
+        <p class="cream-subheading">Tap the glowing heart play button to awaken our birthday magic.</p>
+
+        <div class="heart-reveal-stage" id="heart-reveal-stage">
+          <!-- Light Rays & Sparkle Aura -->
+          <div class="heart-light-rays" aria-hidden="true"></div>
+          <div class="heart-radial-aura" aria-hidden="true"></div>
+
+          <!-- Floating ambient mini hearts & sparkles -->
+          <div class="heart-stage-particles" id="heart-stage-particles" aria-hidden="true">
+            <span class="stage-float-item" style="--fx: -110px; --fy: -70px; --fd: 0s;">✨</span>
+            <span class="stage-float-item" style="--fx: 115px; --fy: -60px; --fd: 0.6s;">💗</span>
+            <span class="stage-float-item" style="--fx: -95px; --fy: 65px; --fd: 1.2s;">🌸</span>
+            <span class="stage-float-item" style="--fx: 105px; --fy: 75px; --fd: 1.8s;">✨</span>
+            <span class="stage-float-item" style="--fx: 0px; --fy: -105px; --fd: 0.9s;">💖</span>
+          </div>
+
+          <!-- Decorative Cupid Bow SVG (inspired by reference screenshot) -->
+          <div class="cupid-bow-deco" id="cupid-bow-deco" aria-hidden="true">
+            <svg viewBox="0 0 80 80" width="56" height="56">
+              <path d="M18 14 C 52 22, 58 52, 18 66" fill="none" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="18" y1="14" x2="18" y2="66" stroke="#a1887f" stroke-width="1.5"/>
+              <line x1="10" y1="44" x2="54" y2="36" stroke="#5d4037" stroke-width="2" stroke-linecap="round"/>
+              <path d="M54 36 L46 33 L48 41 Z" fill="#e63946"/>
+            </svg>
+          </div>
+
+          <!-- Central 3D Glowing Heart + Play Button Stack -->
+          <div class="heart-centerpiece-wrap">
+            <div class="heart-sound-pill" aria-hidden="true">🔊</div>
+            <div class="glowing-3d-heart" id="glowing-3d-heart" aria-hidden="true">
+              <svg viewBox="0 0 120 110" class="heart-3d-svg">
+                <defs>
+                  <radialGradient id="heart3dGrad" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#ffc2d4"/>
+                    <stop offset="45%" stop-color="#ff5d8f"/>
+                    <stop offset="85%" stop-color="#c9184a"/>
+                    <stop offset="100%" stop-color="#800f2f"/>
+                  </radialGradient>
+                  <filter id="heartGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#ff4d6d" flood-opacity="0.55"/>
+                  </filter>
+                </defs>
+                <path filter="url(#heartGlowFilter)" fill="url(#heart3dGrad)" d="M60 98 C60 98 12 68 12 36 C12 18 26 8 42 8 C51 8 57 13 60 20 C63 13 69 8 78 8 C94 8 108 18 108 36 C108 68 60 98 60 98 Z"/>
+                <ellipse cx="38" cy="26" rx="12" ry="6" transform="rotate(-25 38 26)" fill="rgba(255,255,255,0.45)"/>
+              </svg>
+            </div>
+
+            <button id="btn-heart-reveal-play" class="heart-play-btn" aria-label="Reveal Romantic Heart Surprise">
+              <span class="play-triangle">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Revealed Message Box -->
+        <div id="heart-reveal-message" class="heart-reveal-message hidden" aria-live="polite">
+          <p class="reveal-cursive-line">"Every beat of my heart whispers your name, Archita..."</p>
+          <p class="reveal-sub-copy">You are the warmest light in my life and my happiest reason to smile. Happy Birthday, meri jaan! ✨❤️</p>
+        </div>
+
+        <p class="cream-hint" id="heart-reveal-hint">Click the play button on the glowing heart to begin the reveal ✨</p>
+
+        <div class="slide-nav-row cream-nav-row">
+          <button class="btn-secondary cream-btn-sec btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide" id="btn-heart-next">Next: Magical Love Tree 🌳 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3 (NEW PAGE 2): Magical Love Tree -->
+    <section class="slide-page" data-step="3" id="slide-new-2">
+      <div class="slide-card cream-romance-card magical-tree-card text-center">
+        <div class="section-badge cream-badge">Room 3 • Magical Love Tree</div>
+        <h2 class="cream-heading">Growing With Every Heartbeat 🌸</h2>
+        <p class="cream-subheading">Watch our tree grow from a single wish into an eternal canopy of love.</p>
+
+        <div class="magical-tree-stage" id="magical-tree-stage">
+          <div class="sunlight-rays-overlay" aria-hidden="true"></div>
+          <canvas id="magical-tree-canvas" class="magical-tree-canvas" width="680" height="380" aria-label="Animated growing love tree with pink heart blossoms"></canvas>
+
+          <!-- Handwritten Note Card (Bottom-Left, inspired by screenshot) -->
+          <div class="tree-handwritten-card" id="tree-handwritten-card">
+            <span class="tree-made-by">made for you, by hand</span>
+            <h3 class="tree-ilove-title">I love you</h3>
+            <p class="tree-typing-text" id="tree-typing-text"></p>
+          </div>
+        </div>
+
+        <div class="tree-interactive-controls">
+          <button id="btn-magical-tree-bloom" class="btn-secondary cream-btn-sec">
+            Release Heart Blossoms 🌸💖
+          </button>
+        </div>
+
+        <div class="slide-nav-row cream-nav-row">
+          <button class="btn-secondary cream-btn-sec btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Endless Rose Garden 🌹 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 (NEW PAGE 3): Endless Rose Garden -->
+    <section class="slide-page" data-step="4" id="slide-new-3">
+      <div class="slide-card cream-romance-card rose-garden-card text-center">
+        <div class="section-badge cream-badge">Room 4 • Endless Rose Garden</div>
+        <h2 class="cream-heading">A Thousand Roses for Archita 🌹</h2>
+        <p class="cream-subheading">Pink, peach, and ivory blooms unfolding one by one—just like my feelings for you.</p>
+
+        <div class="rose-garden-viewport" id="rose-garden-viewport">
+          <!-- Staggered Rose Wall Layer (populated & animated via JS/CSS) -->
+          <div class="rose-garden-field" id="rose-garden-field" aria-hidden="true"></div>
+
+          <!-- Central Romantic Message Plaque -->
+          <div class="rose-central-plaque">
+            <span class="rose-plaque-badge">🌸 Forever in Bloom 🌸</span>
+            <h3 class="rose-plaque-title">For the Girl Prettier Than Every Rose</h3>
+            <p class="rose-plaque-quote">"In a garden filled with a million roses, my eyes and my heart would still search only for your smile, Archita. May your birthday be as fragrant, gentle, and radiant as you are."</p>
+            <button id="btn-rose-breeze" class="btn-secondary cream-btn-sec">Send a Gentle Rose Breeze 🍃🌹</button>
+          </div>
+        </div>
+
+        <div class="slide-nav-row cream-nav-row">
+          <button class="btn-secondary cream-btn-sec btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Animated Gift Surprise 🎁 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5 (NEW PAGE 4): Animated Gift Surprise -->
+    <section class="slide-page" data-step="5" id="slide-new-4">
+      <div class="slide-card cream-romance-card surprise-gift-card text-center">
+        <div class="section-badge cream-badge">Room 5 • Birthday Surprise</div>
+        <h2 class="cream-heading">A Hand-Wrapped Birthday Wish 🎀</h2>
+        <p class="cream-subheading">Wrapped with warmth and tied with a rose-silk bow just for you.</p>
+
+        <div class="surprise-gift-stage" id="surprise-gift-stage">
+          <!-- Confetti & Sparkle Container -->
+          <div class="surprise-confetti-layer" id="surprise-confetti-layer" aria-hidden="true"></div>
+
+          <!-- Interactive 3D Gift Box -->
+          <div class="surprise-box-3d" id="surprise-box-3d" role="button" tabindex="0" aria-expanded="false" aria-label="Open Archita's Birthday Surprise Gift">
+            <!-- Rising Birthday Letter Inside -->
+            <div class="surprise-rising-letter" id="surprise-rising-letter">
+              <div class="rising-letter-badge">🎂 Happy Birthday! 🎂</div>
+              <h4 class="rising-letter-heading">Dearest Archita,</h4>
+              <p class="rising-letter-body">
+                May this year bring you closer to every dream you hold inside your heart. Thank you for making ordinary days feel like magic simply by being in them. You deserve the entire universe of happiness! 💖✨
+              </p>
+              <span class="rising-letter-sign">— Always cheering for you, Akshat 🫶🏻</span>
+            </div>
+
+            <!-- 3D Lid with Ribbon & Bow -->
+            <div class="surprise-lid-3d" id="surprise-lid-3d">
+              <div class="surprise-lid-ribbon"></div>
+              <div class="surprise-bow-wrap">
+                <span class="s-bow-loop left"></span>
+                <span class="s-bow-loop right"></span>
+                <span class="s-bow-tail left"></span>
+                <span class="s-bow-tail right"></span>
+                <span class="s-bow-knot"></span>
+              </div>
+            </div>
+
+            <!-- 3D Box Base -->
+            <div class="surprise-base-3d">
+              <div class="surprise-base-ribbon-v"></div>
+              <div class="surprise-base-ribbon-h"></div>
+              <div class="surprise-play-emblem" aria-hidden="true">▶</div>
+            </div>
+          </div>
+
+          <div class="surprise-caption-block">
+            <p class="surprise-for-you">For you, Archita</p>
+            <p class="surprise-tap-sub" id="surprise-tap-sub">(tap to open)</p>
+          </div>
+        </div>
+
+        <div class="slide-nav-row cream-nav-row">
+          <button class="btn-secondary cream-btn-sec btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: From Me to You 💌 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6 (NEW PAGE 5): From Me to You -->
+    <section class="slide-page" data-step="6" id="slide-new-5">
+      <div class="slide-card cream-romance-card from-me-card text-center">
+        <!-- Corner Rose Cluster Accent (inspired by screenshot) -->
+        <div class="corner-roses-deco" aria-hidden="true">🥀🌹🌸</div>
+
+        <div class="section-badge cream-badge">Room 6 • Heartfelt Note</div>
+        <h2 class="from-me-cursive-title">From me to you.</h2>
+        <p class="from-me-subtitle">This is how much I love you.</p>
+
+        <!-- Cute Illustrated Animated Bunny & Heart Scene -->
+        <div class="cute-character-stage" id="cute-character-stage">
+          <div class="character-floating-hearts" aria-hidden="true">
+            <span class="c-heart h1">💗</span>
+            <span class="c-heart h2">💖</span>
+            <span class="c-heart h3">✨</span>
+          </div>
+
+          <svg class="cute-bunny-svg" viewBox="0 0 260 200" role="img" aria-label="Cute animated bunnies hugging with a glowing heart">
+            <!-- Soft ground shadow -->
+            <ellipse cx="130" cy="176" rx="78" ry="12" fill="rgba(168, 118, 102, 0.18)"/>
+            <!-- Botanical sprigs left & right -->
+            <path d="M52 170 Q36 140 44 112 M44 148 Q30 142 32 132 M46 130 Q58 122 56 114" fill="none" stroke="#b5a397" stroke-width="2" stroke-linecap="round"/>
+            <path d="M208 170 Q224 140 216 112 M216 148 Q230 142 228 132 M214 130 Q202 122 204 114" fill="none" stroke="#b5a397" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Left Cream Bunny -->
+            <g class="bunny-left-group">
+              <ellipse cx="95" cy="68" rx="11" ry="30" transform="rotate(-14 95 68)" fill="#fffaf3" stroke="#d9c2b2" stroke-width="2"/>
+              <ellipse cx="95" cy="70" rx="6" ry="20" transform="rotate(-14 95 70)" fill="#ffd6e0"/>
+              <ellipse cx="114" cy="66" rx="10" ry="28" transform="rotate(8 114 66)" fill="#fffaf3" stroke="#d9c2b2" stroke-width="2"/>
+              <ellipse cx="114" cy="68" rx="5" ry="18" transform="rotate(8 114 68)" fill="#ffd6e0"/>
+              <!-- Body & Head -->
+              <ellipse cx="104" cy="144" rx="32" ry="30" fill="#fffaf3" stroke="#d9c2b2" stroke-width="2"/>
+              <circle cx="106" cy="106" r="28" fill="#fffaf3" stroke="#d9c2b2" stroke-width="2"/>
+              <!-- Cheeks & Happy Eyes -->
+              <ellipse cx="96" cy="112" rx="6" ry="3.5" fill="#ffb3c1" opacity="0.75"/>
+              <ellipse cx="122" cy="112" rx="6" ry="3.5" fill="#ffb3c1" opacity="0.75"/>
+              <path d="M96 102 Q100 97 104 102" fill="none" stroke="#5c3d36" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M114 102 Q118 97 122 102" fill="none" stroke="#5c3d36" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M107 109 Q110 113 113 109" fill="none" stroke="#e63946" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <!-- Right Blush Bunny -->
+            <g class="bunny-right-group">
+              <ellipse cx="148" cy="72" rx="10" ry="27" transform="rotate(-8 148 72)" fill="#ffe5ec" stroke="#e2b6c1" stroke-width="2"/>
+              <ellipse cx="148" cy="74" rx="5" ry="18" transform="rotate(-8 148 74)" fill="#ffb3c1"/>
+              <ellipse cx="166" cy="74" rx="10" ry="27" transform="rotate(18 166 74)" fill="#ffe5ec" stroke="#e2b6c1" stroke-width="2"/>
+              <ellipse cx="166" cy="76" rx="5" ry="18" transform="rotate(18 166 76)" fill="#ffb3c1"/>
+              <!-- Body & Head -->
+              <ellipse cx="156" cy="146" rx="30" ry="28" fill="#ffe5ec" stroke="#e2b6c1" stroke-width="2"/>
+              <circle cx="152" cy="110" r="26" fill="#ffe5ec" stroke="#e2b6c1" stroke-width="2"/>
+              <!-- Cheeks & Happy Eyes -->
+              <ellipse cx="138" cy="116" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
+              <ellipse cx="162" cy="116" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
+              <path d="M138 106 Q142 101 146 106" fill="none" stroke="#5c3d36" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M154 106 Q158 101 162 106" fill="none" stroke="#5c3d36" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M146 113 Q149 116 152 113" fill="none" stroke="#c9184a" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <!-- Center Glowing Heart Between Them -->
+            <g class="bunny-center-heart">
+              <path d="M130 138 C130 138 112 124 112 111 C112 103 118 98 125 98 C128 98 130 100 130 103 C130 100 132 98 135 98 C142 98 148 103 148 111 C148 124 130 138 130 138 Z" fill="#e63946"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Typewriter Message Box -->
+        <div class="from-me-typewriter-box">
+          <p id="from-me-typewriter-text" class="from-me-typewriter-text"></p>
+        </div>
+
+        <!-- Button to Reveal Extra Personal Note -->
+        <div class="from-me-extra-wrap">
+          <button id="btn-reveal-extra-note" class="btn-secondary cream-btn-sec">
+            Read My Secret Promise 💌✨
+          </button>
+          <div id="from-me-extra-note" class="from-me-extra-note hidden" aria-live="polite">
+            <p>"No matter how busy life gets or how many seasons change, you will always have a safe, warm home in my heart, Archita. Your happiness is my favorite prayer—today on your birthday and every single day after." ❤️🌷</p>
+          </div>
+        </div>
+
+        <div class="slide-nav-row cream-nav-row">
+          <button class="btn-secondary cream-btn-sec btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Magical Love Museum 🚪 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7 (NEW PAGE 6): Magical Love Museum -->
+    <section class="slide-page" data-step="7" id="slide-new-6">
+      <div class="slide-card museum-romance-card text-center">
+        <div class="museum-top-pill">💗 Someone wanted you to know</div>
+        <p class="museum-eyebrow">CLOSED TO EVERYONE. EXCEPT YOU.</p>
+        <h2 class="museum-main-title">
+          Akshat Built a <span class="museum-gold-underline">Little Museum of Memories</span> for You
+        </h2>
+        <p class="museum-subtitle" id="museum-subtitle">Knock or tap the secret door to step inside your private exhibition of love ✨</p>
+
+        <!-- Interactive Door & Secret Gallery Stage -->
+        <div class="museum-stage-container" id="museum-stage-container">
+          <div class="museum-ambient-spotlight" aria-hidden="true"></div>
+          <div class="museum-floating-particles" id="museum-floating-particles" aria-hidden="true"></div>
+
+          <!-- Doorway Arch Frame -->
+          <div class="museum-doorway-arch" id="museum-doorway-arch">
+            <!-- Interior Secret Gallery (Revealed when Door Opens) -->
+            <div class="museum-interior-gallery" id="museum-interior-gallery">
+              <span class="interior-welcome-tag">✨ Welcome Inside, Archita ✨</span>
+              <h4 class="interior-gallery-title">Exhibition I: Our Timeless Moments</h4>
+              <div class="interior-mini-cards">
+                <div class="interior-memory-card">
+                  <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_94434419ad4a3fb275685f91ffe94136_1791866407.webp" alt="Museum Memory 1">
+                  <span>Exhibit #01 • Sweetest Smile</span>
+                </div>
+                <div class="interior-memory-card">
+                  <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_263ae4d7d800c0f5b95abafca022d345_1791866407.webp" alt="Museum Memory 2">
+                  <span>Exhibit #02 • Pure Magic</span>
+                </div>
+              </div>
+              <p class="interior-gallery-note">8 more interactive rooms of memories, games, and letters await just beyond this hall...</p>
+            </div>
+
+            <!-- 3D Swinging Purple Door -->
+            <div class="museum-door-leaf" id="museum-door-leaf" role="button" tabindex="0" aria-expanded="false" aria-label="Open the Magical Love Museum Door">
+              <!-- Door Sign Plaque -->
+              <div class="museum-door-sign">
+                <strong>The Museum of Archita</strong>
+                <span>one visitor only</span>
+              </div>
+
+              <!-- Upper & Lower Recessed Panels -->
+              <div class="museum-door-panel upper-panel">
+                <!-- Golden Ring Knocker / Handle -->
+                <div class="museum-gold-knocker" id="museum-gold-knocker">
+                  <div class="knocker-plate"></div>
+                  <div class="knocker-ring"></div>
+                </div>
+              </div>
+              <div class="museum-door-panel lower-panel"></div>
+            </div>
+          </div>
+
+          <!-- Status Dots Under Door -->
+          <div class="museum-status-dots" id="museum-status-dots">
+            <span class="m-dot active"></span>
+            <span class="m-dot"></span>
+            <span class="m-dot"></span>
+            <p class="museum-status-label" id="museum-status-label">Tap the golden handle to knock &amp; open...</p>
+          </div>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide" id="btn-museum-continue">Continue to The Tree of Everlasting Love 🌸 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 8 (EXISTING SLIDE 2): Animated Love Tree -->
+    <section class="slide-page" data-step="8" id="slide-2">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 8</div>
+        <h2 class="slide-heading">The Tree of Everlasting Love 🌸</h2>
+        <p class="slide-subheading">Rooted in respect, growing with patience, and blooming in every season.</p>
+
+        <div class="tree-showcase-box">
+          <p class="tree-quote">"If I had a flower for every time I thought of you, Archita... I could walk through an eternal garden forever." 🌷</p>
+          <button id="btn-burst-love" class="btn-secondary" aria-label="Send Love Blossoms">
+            Send More Blossoms 🌸✨
+          </button>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: A Special Gift 🎁 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 9 (EXISTING SLIDE 3): 3D Gift Box (Fixed Realistic Animation + 2 Flying Photos) -->
+    <section class="slide-page" data-step="9" id="slide-3">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 9</div>
+        <h2 class="slide-heading">For You, Archita 🎁</h2>
+        <p class="slide-subheading">Tap on the golden ribbon to unwrap the surprise inside.</p>
+
+        <div class="gift-viewport">
+          <div class="gift-box-wrapper" id="gift-box" role="button" tabindex="0" aria-label="Open 3D Gift Box">
+            
+            <!-- Box Lid -->
+            <div class="gift-lid-box" id="gift-lid">
+              <div class="lid-ribbon-h"></div>
+              <div class="lid-ribbon-v"></div>
+              <div class="lid-bow">
+                <span class="bow-left"></span>
+                <span class="bow-right"></span>
+                <span class="bow-center"></span>
+              </div>
+            </div>
+
+            <!-- Box Body Container -->
+            <div class="gift-body-box">
+              <div class="body-ribbon-v"></div>
+              
+              <!-- Pop-out Letter Card -->
+              <div class="gift-card-pop" id="gift-card-pop">
+                <span class="sparkle-icon">✨</span>
+                <h4 class="gift-card-to">Archita,</h4>
+                <p class="gift-card-msg">"I was thinking about you. You are so special for me and I'm also nothing without you 🥺💖<br><br>Happiest birthday meri jaan! May God bless ki tu mere saath rahe aur hamesha khush rahe 🧿🫶🏻"</p>
+                <span class="gift-card-from">Forever Yours, Akshat ❤️</span>
+              </div>
+
+              <!-- Two Popping Polaroid Photos -->
+              <div class="gift-photo-pop photo-left" id="gift-pop-left">
+                <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_94434419ad4a3fb275685f91ffe94136_1791866407.webp" alt="Memory 1">
+                <span>Our Smile 💖</span>
+              </div>
+              <div class="gift-photo-pop photo-right" id="gift-pop-right">
+                <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_263ae4d7d800c0f5b95abafca022d345_1791866407.webp" alt="Memory 2">
+                <span>Always You ✨</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="interactive-hint" id="gift-status-hint">Tap on the gift box to open ✨</p>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Scratch Card 🎨 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 10 (EXISTING SLIDE 4): Scratch Card Room -->
+    <section class="slide-page" data-step="10" id="slide-4">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 10</div>
+        <h2 class="slide-heading">Scratch to Reveal Our Memory 🎨</h2>
+        <p class="slide-subheading">Use your finger or cursor to gently scratch off the golden cover!</p>
+
+        <div class="scratch-card-wrapper">
+          <div class="scratch-card-inner">
+            <!-- Hidden Couple Image underneath -->
+            <img class="scratch-reveal-img" src="https://ourmoments.live/wp-content/uploads/om-photos/om_94434419ad4a3fb275685f91ffe94136_1791866407.webp" alt="Akshat and Archita Cherished Moment">
+            <!-- Canvas Overlay for Scratching -->
+            <canvas id="scratch-canvas" class="scratch-canvas" width="320" height="320"></canvas>
+          </div>
+          <p id="scratch-status-hint" class="interactive-hint">Rub across the card to see the picture ✨</p>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Couple Quiz 🧩 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 11 (EXISTING SLIDE 5): 10-Question Couple Quiz -->
+    <section class="slide-page" data-step="11" id="slide-5">
+      <div class="slide-card glass-panel">
+        <div class="text-center">
+          <div class="section-badge">Room 11</div>
+          <h2 class="slide-heading">How Well Do You Know Us? ❤️</h2>
+          <p class="slide-subheading">A sweet 10-question quiz celebrating our dates and feelings!</p>
+        </div>
+
+        <div class="quiz-container">
+          <div class="quiz-header-meta">
+            <span id="quiz-question-counter" class="quiz-pill">Question 1 of 10</span>
+            <span id="quiz-score-tracker" class="quiz-pill score-pill">Score: 0</span>
+          </div>
+
+          <div class="quiz-card-box">
+            <h3 id="quiz-question-title" class="quiz-question-text">Loading question...</h3>
+            <div id="quiz-options-grid" class="quiz-options-grid"></div>
+            <div id="quiz-feedback-box" class="quiz-feedback-box hidden"></div>
+          </div>
+
+          <div class="quiz-nav-row">
+            <button id="btn-quiz-next" class="btn-secondary hidden">Next Question ➔</button>
+          </div>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Photo Puzzle 🖼️ ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 12 (EXISTING SLIDE 6): 3x3 Photo Puzzle -->
+    <section class="slide-page" data-step="12" id="slide-6">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 12</div>
+        <h2 class="slide-heading">The Memory Puzzle (3×3)</h2>
+        <p class="slide-subheading">Tap or drag adjacent tiles to solve the memory portrait.</p>
+
+        <div class="puzzle-layout-wrapper">
+          <div class="puzzle-board-wrap">
+            <div class="puzzle-board" id="puzzle-board" role="grid" aria-label="3 by 3 Puzzle"></div>
+            <div class="puzzle-controls-row">
+              <button id="btn-shuffle-puzzle" class="btn-secondary">Scramble 🔀</button>
+              <button id="btn-solve-puzzle" class="btn-text">Assist Solution 🧩</button>
+            </div>
+            <p id="puzzle-status" class="puzzle-status-text">Arrange the 9 tiles to complete the portrait.</p>
+          </div>
+
+          <div class="puzzle-target-preview">
+            <h4>Target Photo</h4>
+            <div class="puzzle-preview-frame">
+              <img id="puzzle-preview-image" src="" alt="Target solved photo preview">
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Sealed Love Letter 💌 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 13 (EXISTING SLIDE 7): Sealed Origami Envelope & Birthday Love Letter -->
+    <section class="slide-page" data-step="13" id="slide-7">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 13</div>
+        <h2 class="slide-heading">A Letter, Sealed Just for You 💌</h2>
+        <p class="slide-subheading">Click the red wax seal to open the handwritten birthday letter.</p>
+
+        <div class="envelope-display-stage">
+          <div class="envelope-outer" id="envelope-outer">
+            
+            <!-- Envelope Back Pocket -->
+            <div class="envelope-back"></div>
+
+            <!-- Parchment Paper with Archita's Full Letter -->
+            <div class="envelope-paper-card" id="envelope-paper-card">
+              <div class="letter-scroll-inner text-left">
+                <span class="letter-date">February 1, 2026 & Always</span>
+                <h3 class="letter-title">💗 Happy Birthday, Archita! 🎂✨</h3>
+
+                <div class="letter-content-text">
+                  <p>Hey Archita ❤️,</p>
+                  <p>Aaj ka din mere liye bhi special hai, kyunki aaj us insaan ka birthday hai jo meri life mein ek alag si smile aur ek alag si feeling lekar aayi hai. 🫶🏻💖</p>
+                  <p>Sabse pehle, Happy Birthday to you, Archita! 🎂🎀 May your life always be filled with happiness, success, beautiful memories and all the little things that make your heart smile. Tumhari har wish poori ho aur tumhari smile hamesha aise hi bani rahe. ✨</p>
+                  <p>Pata hai, kuch log life mein achanak aate hain, lekin dheere-dheere itne special ban jaate hain ki unse baat karna, unki smile dekhna aur unke baare mein sochna bhi din ka favourite part ban jaata hai. Mere liye tum kuch aisi hi ho. ❤️</p>
+                  <blockquote class="letter-shayari">
+                    “Tumhe paana hi meri mohabbat ki shart nahi,<br>
+                    Tumhara khush rehna bhi mere liye kisi dua se kam nahi.” 🌷
+                  </blockquote>
+                  <p>Aur aaj tumhare birthday par main tumse ek baat kehna chahta hoon, jo shayad mere dil mein kaafi waqt se hai. 🥹💌</p>
+                  <p>Archita, I really like you. Tum mere liye sirf ek naam nahi, balki ek aisi feeling ho jise main words mein poori tarah explain nahi kar sakta. Main nahi jaanta ki future kya hoga, lekin itna zaroor jaanta hoon ki tumhe aur achhe se jaanne, tumhare saath beautiful memories banane aur tumhari life ke special moments ka hissa banne ki meri dil se wish hai. ❤️</p>
+                  <p>So, Archita… will you give me a chance to be more than just a friend? Will you let me be the person who makes you smile, supports your dreams and stands beside you through life's little ups and downs? 🫶🏻💗</p>
+                  <p>Main tumse perfect hone ka promise nahi karunga, lekin honest rehne, tumhari respect karne aur tumhari feelings ko samajhne ki poori koshish zaroor karunga.</p>
+                  <p>Aur agar tumhari feelings mere jaisi nahi hain, toh bhi main tumhare answer ki respect karunga. Kyunki tumhari khushi aur tumhari choice mere liye important hai. 🌸</p>
+                  <p>Aaj ke din bas itna chahta hoon ki tum khoob haso, apne saare dreams poore karo aur life tumhe woh saari khushiyan de jinki tum haqdar ho.</p>
+                  <p>One last thing, Archita… ❤️</p>
+                  <blockquote class="letter-shayari">
+                    “Hazaaron chehron mein ek sukoon sa lagta hai,<br>
+                    Tumhara naam bhi dil ko ek alag ehsaas deta hai.<br>
+                    Birthday tumhara hai, par dua meri hai,<br>
+                    Tumhari zindagi khushiyon se bhari rahe, bas khwahish meri hai.” 🎀
+                  </blockquote>
+                  <p>Happy Birthday once again, Archita! 🎂💗<br>Keep smiling, keep shining and keep being the beautiful person you are. ✨</p>
+                  <p>And maybe, just maybe… this birthday becomes the beginning of a beautiful new chapter for us. 🥹❤️</p>
+                  <div class="letter-sign">
+                    With lots of care, feelings and a little hope,<br>
+                    <strong>Someone who genuinely wishes to see you happy.</strong> 💌🌷<br>
+                    <span class="sign-cursive">Akshat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Envelope Left, Right, Bottom Triangles -->
+            <div class="envelope-flap-left"></div>
+            <div class="envelope-flap-right"></div>
+            <div class="envelope-flap-bottom"></div>
+
+            <!-- Top Flap with Wax Seal -->
+            <div class="envelope-flap-top" id="envelope-flap-top">
+              <div class="wax-seal-btn" id="wax-seal" role="button" tabindex="0" aria-label="Break Wax Seal">
+                <span>❤️</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="interactive-hint" id="envelope-hint">Click on the red wax seal to open 💌</p>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide">Next: Key Promises 💍 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 14 (EXISTING SLIDE 8): Sacred Promises Checklist with Animated Seal Stamp -->
+    <section class="slide-page" data-step="14" id="slide-8">
+      <div class="slide-card glass-panel text-center">
+        <div class="section-badge">Room 14</div>
+        <h2 class="slide-heading">Our Key Promises 💍</h2>
+        <p class="slide-subheading">Tick the promises you'll hold on to forever.</p>
+
+        <div class="promises-paper-card">
+          <div class="stamp-seal-badge hidden" id="stamp-seal-badge">SEALED ❤️</div>
+          <form id="promises-form" onsubmit="return false;">
+            <ul class="promises-list" id="promises-list"></ul>
+          </form>
+          <div class="promise-progress-wrapper">
+            <div class="promise-progress-bar" id="promise-progress-fill" style="width: 0%;"></div>
+          </div>
+          <p class="promise-count-label" id="promise-status-label">0 of 5 Promises Sealed</p>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-primary btn-next-slide" id="btn-goto-finale" disabled>Next: Grand Finale 🎆 ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 15 (EXISTING SLIDE 9): Grand Finale (Pop-Pop Photo Explosion & Lightbox) -->
+    <section class="slide-page" data-step="15" id="slide-9">
+      <div class="slide-card glass-panel text-center finale-card">
+        <div class="crown-emojis">👑💖✨</div>
+        <h2 class="slide-heading">Our Sky Full of Memories</h2>
+        <p class="slide-subheading">Every special picture popped out just for you! Tap any photo to see it in full size ❤️</p>
+
+        <!-- Pop-Pop Photos Explosion Canvas Grid -->
+        <div class="photo-pop-gallery-grid" id="photo-pop-gallery"></div>
+
+        <div class="finale-message-box">
+          <h3>You Have My Whole Heart, Archita ❤️</h3>
+          <p>Thank you for simply being you—my haven, my compass, and my greatest blessing. Happy Birthday once again! 🎂✨</p>
+          <button id="btn-shower-hearts" class="btn-primary">Shower Endless Love Blossoms 🌸🎆</button>
+        </div>
+
+        <div class="slide-nav-row">
+          <button class="btn-secondary btn-prev-slide">⬅ Back</button>
+          <button class="btn-secondary" id="btn-restart-slides">Restart Experience 🔄</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Photo Lightbox Modal -->
+  <div id="photo-lightbox" class="lightbox-backdrop hidden" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <button id="btn-close-lightbox" class="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-enlarged-img" src="" alt="Enlarged cherished moment">
+      <p id="lightbox-caption-text" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
